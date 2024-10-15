@@ -51,8 +51,6 @@ FROM netflix
 GROUP BY 1;
 ```
 
-**Objective:** Determine the distribution of content types on Netflix.
-
 ### 2. Find the Most Common Rating for Movies and TV Shows
 
 ```sql
@@ -79,8 +77,6 @@ FROM RankedRatings
 WHERE rank = 1;
 ```
 
-**Objective:** Identify the most frequently occurring rating for each type of content.
-
 ### 3. List All Movies Released in a Specific Year (e.g., 2020)
 
 ```sql
@@ -88,8 +84,6 @@ SELECT *
 FROM netflix
 WHERE release_year = 2020;
 ```
-
-**Objective:** Retrieve all movies released in a specific year.
 
 ### 4. Find the Top 5 Countries with the Most Content on Netflix
 
@@ -108,8 +102,6 @@ ORDER BY total_content DESC
 LIMIT 5;
 ```
 
-**Objective:** Identify the top 5 countries with the highest number of content items.
-
 ### 5. Identify the Longest Movie
 
 ```sql
@@ -120,8 +112,6 @@ WHERE type = 'Movie'
 ORDER BY SPLIT_PART(duration, ' ', 1)::INT DESC;
 ```
 
-**Objective:** Find the movie with the longest duration.
-
 ### 6. Find Content Added in the Last 5 Years
 
 ```sql
@@ -129,8 +119,6 @@ SELECT *
 FROM netflix
 WHERE TO_DATE(date_added, 'Month DD, YYYY') >= CURRENT_DATE - INTERVAL '5 years';
 ```
-
-**Objective:** Retrieve content added to Netflix in the last 5 years.
 
 ### 7. Find All Movies/TV Shows by Director 'Rajiv Chilaka'
 
@@ -145,8 +133,6 @@ FROM (
 WHERE director_name = 'Rajiv Chilaka';
 ```
 
-**Objective:** List all content directed by 'Rajiv Chilaka'.
-
 ### 8. List All TV Shows with More Than 5 Seasons
 
 ```sql
@@ -155,8 +141,6 @@ FROM netflix
 WHERE type = 'TV Show'
   AND SPLIT_PART(duration, ' ', 1)::INT > 5;
 ```
-
-**Objective:** Identify TV shows with more than 5 seasons.
 
 ### 9. Count the Number of Content Items in Each Genre
 
@@ -167,8 +151,6 @@ SELECT
 FROM netflix
 GROUP BY 1;
 ```
-
-**Objective:** Count the number of content items in each genre.
 
 ### 10.Find each year and the average numbers of content release in India on netflix. 
 return top 5 year with highest avg content release!
@@ -189,8 +171,6 @@ ORDER BY avg_release DESC
 LIMIT 5;
 ```
 
-**Objective:** Calculate and rank years by the average number of content releases by India.
-
 ### 11. List All Movies that are Documentaries
 
 ```sql
@@ -198,8 +178,6 @@ SELECT *
 FROM netflix
 WHERE listed_in LIKE '%Documentaries';
 ```
-
-**Objective:** Retrieve all movies classified as documentaries.
 
 ### 12. Find All Content Without a Director
 
@@ -209,8 +187,6 @@ FROM netflix
 WHERE director IS NULL;
 ```
 
-**Objective:** List content that does not have a director.
-
 ### 13. Find How Many Movies Actor 'Salman Khan' Appeared in the Last 10 Years
 
 ```sql
@@ -219,8 +195,6 @@ FROM netflix
 WHERE casts LIKE '%Salman Khan%'
   AND release_year > EXTRACT(YEAR FROM CURRENT_DATE) - 10;
 ```
-
-**Objective:** Count the number of movies featuring 'Salman Khan' in the last 10 years.
 
 ### 14. Find the Top 10 Actors Who Have Appeared in the Highest Number of Movies Produced in India
 
@@ -234,8 +208,6 @@ GROUP BY actor
 ORDER BY COUNT(*) DESC
 LIMIT 10;
 ```
-
-**Objective:** Identify the top 10 actors with the most appearances in Indian-produced movies.
 
 ### 15. Categorize Content Based on the Presence of 'Kill' and 'Violence' Keywords
 
@@ -253,8 +225,6 @@ FROM (
 ) AS categorized_content
 GROUP BY category;
 ```
-
-**Objective:** Categorize content as 'Bad' if it contains 'kill' or 'violence' and 'Good' otherwise. Count the number of items in each category.
 
 ## Findings and Conclusion
 
